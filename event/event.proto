@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package event;
+
+
+option go_package = "github.com/go-saas/kit/event;event";
+
+message Config{
+  string type=1;
+  string addr=2;
+  string topic=3;
+  string group=4;
+
+  message Kafka{
+  }
+
+  Kafka kafka=10;
+
+  message Pulsar{
+  }
+
+  Pulsar pulsar=11;
+
+}

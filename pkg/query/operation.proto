@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package query.operation;
+
+
+option go_package = "github.com/go-saas/kit/pkg/query;query";
+
+message StringFilterOperation{
+
+
+
+
+}
+
+message BooleanFilterOperators{
+}
+
+message NullFilterOperators{
+}
+
+message DateFilterOperators{
+}
+
+message DoubleFilterOperators{
+
+
+}
+message FloatFilterOperators{
+
+
+}
+message Int64FilterOperators{
+
+
+}
+
+//message UInt64FilterOperators{
+//
+//
+//}
+message Int32FilterOperators{
+
+
+}
+//message UInt32FilterOperators{
+//
+//
+//}

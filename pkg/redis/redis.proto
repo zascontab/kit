@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package redis;
+
+
+option go_package = "github.com/go-saas/kit/pkg/redis;redis";
+
+message Config {
+  repeated string addrs = 2;
+  optional string master_name=12;
+}
