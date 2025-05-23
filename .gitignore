@@ -40,8 +40,6 @@ bin/
 
 .assets/
 
-buf/*
-!buf/buf.yaml
 
 # Local config files
 *.local.yml
