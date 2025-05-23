@@ -31,6 +31,8 @@ service ClientService{
       body: "*"
     };
   }
+
+  rpc DeleteOAuth2Client(DeleteOAuth2ClientRequest)returns(OAuth2Client){
     option (google.api.http) = {
       delete:  "/v1/oidc/client/{id}"
     };
@@ -99,7 +101,6 @@ message OAuth2Client{
   optional string token_endpoint_auth_signing_alg=33;
   optional string tos_uri=34;
   optional string userinfo_signed_response_alg=36;
-
 }
 
 message DeleteOAuth2ClientRequest{

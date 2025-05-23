@@ -16,6 +16,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"google.golang.org/protobuf/types/known/anypb"
 )
 
 // ensure the imports are used
@@ -314,64 +315,6 @@ func (m *OAuth2Client) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetCreatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, OAuth2ClientValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, OAuth2ClientValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return OAuth2ClientValidationError{
-				field:  "CreatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if all {
-		switch v := interface{}(m.GetUpdatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, OAuth2ClientValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, OAuth2ClientValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return OAuth2ClientValidationError{
-				field:  "UpdatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
 	if m.BackchannelLogoutSessionRequired != nil {
 		// no validation rules for BackchannelLogoutSessionRequired
 	}
@@ -408,78 +351,12 @@ func (m *OAuth2Client) validate(all bool) error {
 		// no validation rules for FrontchannelLogoutUri
 	}
 
-	if m.Jwks != nil {
-
-		if all {
-			switch v := interface{}(m.GetJwks()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, OAuth2ClientValidationError{
-						field:  "Jwks",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, OAuth2ClientValidationError{
-						field:  "Jwks",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetJwks()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return OAuth2ClientValidationError{
-					field:  "Jwks",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	if m.JwksUri != nil {
 		// no validation rules for JwksUri
 	}
 
 	if m.LogoUri != nil {
 		// no validation rules for LogoUri
-	}
-
-	if m.Metadata != nil {
-
-		if all {
-			switch v := interface{}(m.GetMetadata()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, OAuth2ClientValidationError{
-						field:  "Metadata",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, OAuth2ClientValidationError{
-						field:  "Metadata",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetMetadata()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return OAuth2ClientValidationError{
-					field:  "Metadata",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
 	}
 
 	if m.Owner != nil {
@@ -1005,35 +882,6 @@ func (m *PatchOAuth2Client) validate(all bool) error {
 	// no validation rules for Op
 
 	// no validation rules for Path
-
-	if all {
-		switch v := interface{}(m.GetValue()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, PatchOAuth2ClientValidationError{
-					field:  "Value",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, PatchOAuth2ClientValidationError{
-					field:  "Value",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetValue()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return PatchOAuth2ClientValidationError{
-				field:  "Value",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
 
 	if m.From != nil {
 		// no validation rules for From
