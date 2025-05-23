@@ -1,24 +1,23 @@
 GOPATH:=$(shell go env GOPATH)
 VERSION=$(shell git describe --tags --always)
 
+
 .PHONY: api
 # generate api proto
 api:
+	cd .. && buf generate --path ./buf/realtime --template ./realtime/buf.gen.yaml
+
 .PHONY: build
 # build
 build:
 	mkdir -p bin/ && go build -buildvcs=false -ldflags "-X main.Version=$(VERSION)" -o ./bin/ ./...
 
-.PHONY: generate
-# generate
-generate:
-	go generate ./...
 
 .PHONY: all
 # generate all
 all:
 	make api;
-	make generate;
+
 
 # show help
 help:

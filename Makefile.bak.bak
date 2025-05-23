@@ -1,5 +1,8 @@
 GOPATH:=$(shell go env GOPATH)
 VERSION=$(shell git describe --tags --always)
+BUF_VERSION=v1.27.1
+DIR=$(shell pwd)
+
 SRV_PROTO_DIR = dtm event oidc user sys saas realtime gateway payment order product
 PKG_PROTO_DIR = $(patsubst %/,%,$(shell cd pkg && ls -d */))
 OTHER_PROTO_DIR = $(patsubst %/,%,$(shell cd proto && ls -d */))
@@ -9,6 +12,15 @@ THIRD_PARTY_PROTO_DIR = errors google lbs protoc-gen-openapiv2 validate
 # link proto
 link:
 	for d in $(SRV_PROTO_DIR); do \
+  		ln -sfn $(DIR)/$$d $(DIR)/buf/$$d; \
+  	done
+	for d in $(PKG_PROTO_DIR); do \
+		ln -sfn $(DIR)/pkg/$$d $(DIR)/buf/$$d; \
+    done
+	for d in $(OTHER_PROTO_DIR); do \
+		ln -sfn $(DIR)/proto/$$d $(DIR)/buf/$$d; \
+    done
+
 .PHONY: init
 # init env
 init:
