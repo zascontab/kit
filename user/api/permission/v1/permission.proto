@@ -4,6 +4,10 @@ package user.api.permission.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/struct.proto";
 import "validate/validate.proto";
 
 
@@ -126,12 +130,14 @@ message PermissionDefGroup{
   PermissionSide side=2;
   int32 priority=3;
   repeated PermissionDef def=4;
+  google.protobuf.Struct extra=5;
   string name=6;
 }
 
 message PermissionDef{
   string display_name=1;
   PermissionSide side=2;
+  google.protobuf.Struct extra=3;
   string namespace=4;
   string action=5;
 

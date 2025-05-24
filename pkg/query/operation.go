@@ -2,6 +2,7 @@ package query
 
 import (
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func FromString(s []string) []*wrapperspb.StringValue {

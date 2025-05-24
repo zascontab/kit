@@ -9,6 +9,7 @@ import (
 	"github.com/go-saas/kit/pkg/errors"
 	v1 "github.com/go-saas/kit/user/api/auth/v1"
 	"github.com/go-saas/sessions"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 	"net/http"
 )
 

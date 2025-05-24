@@ -10,6 +10,8 @@ build:
 .PHONY: api
 # generate api proto
 api:
+	cd .. && buf generate --path ./buf/payment --template ./payment/buf.gen.yaml
+
 .PHONY: all
 # generate all
 all:

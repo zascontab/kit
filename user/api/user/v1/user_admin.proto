@@ -3,6 +3,10 @@ syntax = "proto3";
 package user.api.user.v1;
 
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "validate/validate.proto";
 import "google/api/field_behavior.proto";
@@ -69,6 +73,7 @@ message AdminListUsersRequest{
   int32 page_size = 2;
   string search = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   UserFilter filter =6;
 }
 
@@ -85,9 +90,14 @@ message AdminListUsersResponse{
 
 message AdminCreateUserRequest{
 
+  optional google.protobuf.StringValue username =1;
+  optional google.protobuf.StringValue name=2;
+  optional google.protobuf.StringValue phone =3;
+  optional google.protobuf.StringValue email=4 [(validate.rules).string.email = true];
 
   string password=5;
   string confirm_password=6;
+  optional google.protobuf.Timestamp birthday=7;
   //
   Gender gender=8;
   string avatar=9;
@@ -96,11 +106,17 @@ message AdminCreateUserRequest{
 
 message AdminUpdateUserRequest{
   AdminUpdateUser user=2 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 3;
 }
 
 message AdminUpdateUser{
   string id =1 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
 
+  optional google.protobuf.StringValue username =2;
+  optional google.protobuf.StringValue name=3;
+  optional google.protobuf.StringValue phone =4;
+  optional google.protobuf.StringValue email=5;
+  optional google.protobuf.Timestamp birthday=6;
   //
   Gender gender=7;
 

@@ -5,6 +5,8 @@ package user.api.auth.v1;
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/duration.proto";
 import "validate/validate.proto";
 
 option go_package = "github.com/go-saas/kit/user/api/auth/v1;v1";
@@ -183,13 +185,18 @@ message RefreshTokenAuthReply{
 }
 
 message PasswordlessTokenAuthRequest{
+    optional google.protobuf.StringValue phone =4;
+    optional google.protobuf.StringValue email=5 [(validate.rules).string.email=true];
 }
 
 message PasswordlessTokenAuthReply{
     //expire time
+    google.protobuf.Duration expire=1;
 }
 
 message LoginPasswordlessRequest{
+    optional google.protobuf.StringValue phone =4;
+    optional google.protobuf.StringValue email=5;
     string  token=10 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
 
     bool web=20;
@@ -206,14 +213,19 @@ message LoginPasswordlessReply{
 }
 
 message ForgetPasswordTokenRequest{
+    optional google.protobuf.StringValue phone =4;
+    optional google.protobuf.StringValue email=5;
 
 }
 
 message ForgetPasswordTokenReply{
     //expire time
+    google.protobuf.Duration expire=1;
 }
 
 message ForgetPasswordRequest{
+    optional google.protobuf.StringValue phone =4;
+    optional google.protobuf.StringValue email=5;
     string token=10;
 }
 

@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package product.api.price.v1;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -14,6 +17,8 @@ option go_package = "github.com/go-saas/kit/product/api/price/v1;v1";
 message Price{
   string id=1;
 
+  google.protobuf.Timestamp created_at =4;
+  google.protobuf.Timestamp updated_at =5;
   string tenant_id=6;
 
   // product/product_sku
@@ -133,6 +138,7 @@ message PriceParams{
 
 message UpdatePriceRequest{
   PriceParams price=2 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 3;
 }
 
 
@@ -142,6 +148,7 @@ message ListPriceRequest{
   int32 page_size = 2;
   string search = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   PriceFilter filter =6;
 }
 

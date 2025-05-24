@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package product.api.product.v1;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -30,6 +33,8 @@ message CreateProductSku{
 message ProductSku{
   string id=1;
 
+  google.protobuf.Timestamp created_at =4;
+  google.protobuf.Timestamp updated_at =5;
   string tenant_id=6;
   string version=7;
 
@@ -40,6 +45,8 @@ message ProductSku{
   repeated ProductMedia medias=14;
 
   string barcode=19;
+  google.protobuf.Timestamp saleable_from=23;
+  google.protobuf.Timestamp saleable_to=24;
 
   repeated Keyword keywords=25;
 

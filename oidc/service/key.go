@@ -8,6 +8,7 @@ import (
 	"github.com/samber/lo"
 
 	pb "github.com/go-saas/kit/oidc/api/key/v1"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type KeyService struct {

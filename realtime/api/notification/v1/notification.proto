@@ -2,7 +2,11 @@ syntax = "proto3";
 
 package notification.v1;
 
+import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -52,6 +56,7 @@ service NotificationService {
   }
 
   //ReadNotification set notification as read
+  rpc ReadNotification (ReadNotificationRequest) returns (google.protobuf.Empty){
     option (google.api.http) = {
       put: "/v1/realtime/notification/{id}/read"
       body:"*"
@@ -92,6 +97,7 @@ message ListNotificationRequest {
   string before_page_token =2;
   int32 page_size = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   NotificationFilter filter =6;
 }
 message ListNotificationReply {
@@ -114,6 +120,7 @@ message Notification{
   string link=8;
   string source=9;
   string user_id=10;
+  google.protobuf.Struct extra=11;
   int32 level=12;
 
   bool has_read=100;

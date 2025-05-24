@@ -16,6 +16,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"google.golang.org/protobuf/types/known/anypb"
 
 	v1 "github.com/go-saas/kit/user/api/permission/v1"
 )

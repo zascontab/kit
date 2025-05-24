@@ -9,6 +9,8 @@ import (
 	client "github.com/ory/hydra-client-go/v2"
 	"github.com/peterhellberg/link"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/emptypb"
+	"google.golang.org/protobuf/types/known/structpb"
 	"net/url"
 	"strconv"
 )

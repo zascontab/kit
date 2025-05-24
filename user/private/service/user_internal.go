@@ -24,6 +24,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/stripe/stripe-go/v76"
 	stripeclient "github.com/stripe/stripe-go/v76/client"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type UserInternalService struct {

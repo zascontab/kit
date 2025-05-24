@@ -5,6 +5,8 @@ VERSION=$(shell git describe --tags --always)
 .PHONY: api
 # generate api proto
 api:
+	cd .. && buf generate --path ./buf/realtime --template ./realtime/buf.gen.yaml
+
 .PHONY: build
 # build
 build:

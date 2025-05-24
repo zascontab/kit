@@ -5,6 +5,8 @@ package user.api.auth.v1;
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/duration.proto";
 import "validate/validate.proto";
 import "user/api/auth/v1/auth.proto";
 

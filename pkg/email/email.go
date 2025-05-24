@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/goava/di"
 	mail "github.com/wneessen/go-mail"
+	"google.golang.org/protobuf/proto"
 )
 
 type Client interface {

@@ -16,6 +16,7 @@ syntax = "proto3";
 
 package google.api;
 
+import "google/protobuf/any.proto";
 
 option cc_enable_arenas = true;
 option go_package = "google.golang.org/genproto/googleapis/api/httpbody;httpbody";
@@ -49,6 +50,7 @@ option objc_class_prefix = "GAPI";
 //     service ResourceService {
 //       rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
 //       rpc UpdateResource(google.api.HttpBody) returns
+//       (google.protobuf.Empty);
 //     }
 //
 // Example with streaming methods:
@@ -71,4 +73,5 @@ message HttpBody {
 
   // Application specific response metadata. Must be set in the first response
   // for streaming APIs.
+  repeated google.protobuf.Any extensions = 3;
 }

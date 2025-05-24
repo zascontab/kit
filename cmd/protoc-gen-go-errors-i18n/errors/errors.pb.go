@@ -7,6 +7,9 @@
 package errors
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
 	reflect "reflect"
 	sync "sync"
 )
@@ -23,6 +26,10 @@ type Error struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	Code     int32             `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Reason   string            `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	Message  string            `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Metadata map[string]string `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Error) Reset() {
@@ -167,9 +174,13 @@ var file_errors_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_errors_proto_goTypes = []interface{}{
 	(*Error)(nil),                         // 0: errors.Error
 	nil,                                   // 1: errors.Error.MetadataEntry
+	(*descriptorpb.EnumOptions)(nil),      // 2: google.protobuf.EnumOptions
+	(*descriptorpb.EnumValueOptions)(nil), // 3: google.protobuf.EnumValueOptions
 }
 var file_errors_proto_depIdxs = []int32{
 	1, // 0: errors.Error.metadata:type_name -> errors.Error.MetadataEntry
+	2, // 1: errors.default_code:extendee -> google.protobuf.EnumOptions
+	3, // 2: errors.code:extendee -> google.protobuf.EnumValueOptions
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

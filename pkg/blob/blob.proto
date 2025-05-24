@@ -3,6 +3,8 @@ syntax = "proto3";
 package blob;
 
 option go_package = "github.com/go-saas/kit/pkg/blob;blob";
+import "google/protobuf/struct.proto";
+import "google/protobuf/wrappers.proto";
 import "validate/validate.proto";
 
 message Config{
@@ -25,6 +27,7 @@ message ProviderS3{
 }
 
 message ProviderOs{
+  optional google.protobuf.StringValue dir=1;
 }
 
 message BlobFile{
@@ -33,4 +36,5 @@ message BlobFile{
   string mime=3;
   int64 size=4;
   string url =5;
+  google.protobuf.Struct metadata=6;
 }

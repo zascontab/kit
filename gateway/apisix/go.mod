@@ -16,6 +16,7 @@ require (
 	github.com/thediveo/enumflag v0.10.1
 	go.opentelemetry.io/otel v1.21.0
 	go.uber.org/zap v1.24.0
+	google.golang.org/protobuf v1.31.0
 )
 
 require (
@@ -48,8 +49,11 @@ require (
 	github.com/go-saas/lbs v0.0.2 // indirect
 	github.com/go-saas/uow v0.0.7 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
+	github.com/google/flatbuffers v22.9.29+incompatible // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/gorilla/csrf v1.7.1 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect

@@ -10,6 +10,7 @@ import (
 	"github.com/go-saas/lbs"
 	"github.com/go-saas/saas"
 	"github.com/goxiaoy/vfs"
+	"google.golang.org/protobuf/types/known/structpb"
 	"io"
 	"os"
 	"path/filepath"
@@ -24,6 +25,8 @@ import (
 	"github.com/go-saas/kit/user/private/biz"
 	"github.com/google/uuid"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/fieldmaskpb"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 
 	pb "github.com/go-saas/kit/user/api/account/v1"
 )

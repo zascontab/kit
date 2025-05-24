@@ -9,6 +9,7 @@ import (
 	"github.com/go-saas/kit/pkg/dal"
 
 	pb "github.com/go-saas/kit/dtm/api/dtm/v1"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type MsgService struct {

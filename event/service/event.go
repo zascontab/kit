@@ -7,6 +7,7 @@ import (
 	"github.com/samber/lo"
 
 	pb "github.com/go-saas/kit/event/api/v1"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type EventService struct {

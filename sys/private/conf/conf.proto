@@ -6,6 +6,7 @@ option go_package = "github.com/go-saas/kit/sys/private/conf;conf";
 import "conf/conf.proto";
 import "blob/blob.proto";
 import "apisix/apisix.proto";
+import "google/protobuf/struct.proto";
 
 
 message Bootstrap {

@@ -122,6 +122,35 @@ func (m *Config) validate(all bool) error {
 		}
 	}
 
+	if all {
+		switch v := interface{}(m.GetExtra()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ConfigValidationError{
+					field:  "Extra",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ConfigValidationError{
+					field:  "Extra",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExtra()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ConfigValidationError{
+				field:  "Extra",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ConfigMultiError(errors)
 	}
@@ -221,6 +250,39 @@ func (m *Config_Kafka) validate(all bool) error {
 
 	var errors []error
 
+	if m.Version != nil {
+
+		if all {
+			switch v := interface{}(m.GetVersion()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, Config_KafkaValidationError{
+						field:  "Version",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, Config_KafkaValidationError{
+						field:  "Version",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetVersion()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return Config_KafkaValidationError{
+					field:  "Version",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return Config_KafkaMultiError(errors)
 	}
@@ -319,6 +381,72 @@ func (m *Config_Pulsar) validate(all bool) error {
 	}
 
 	var errors []error
+
+	if m.OperationTimeout != nil {
+
+		if all {
+			switch v := interface{}(m.GetOperationTimeout()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, Config_PulsarValidationError{
+						field:  "OperationTimeout",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, Config_PulsarValidationError{
+						field:  "OperationTimeout",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetOperationTimeout()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return Config_PulsarValidationError{
+					field:  "OperationTimeout",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if m.ConnectionTimeout != nil {
+
+		if all {
+			switch v := interface{}(m.GetConnectionTimeout()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, Config_PulsarValidationError{
+						field:  "ConnectionTimeout",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, Config_PulsarValidationError{
+						field:  "ConnectionTimeout",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetConnectionTimeout()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return Config_PulsarValidationError{
+					field:  "ConnectionTimeout",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
 
 	if len(errors) > 0 {
 		return Config_PulsarMultiError(errors)

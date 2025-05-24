@@ -4,6 +4,10 @@ package user.api.account.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 import "user/api/role/v1/role.proto";
 import "user/api/user/v1/user.proto";
@@ -74,6 +78,7 @@ message GetProfileResponse{
   optional string name=3;
   optional string phone =4;
   optional string email=5;
+  optional google.protobuf.Timestamp birthday=6;
   //
   .user.api.user.v1.Gender gender=7;
   repeated .user.api.role.v1.Role roles=8;
@@ -93,6 +98,7 @@ message UpdateProfileResponse{
 
 }
 message GetSettingsRequest{
+  google.protobuf.FieldMask fields=5;
   SettingsFilter filter=6;
 }
 
@@ -128,6 +134,7 @@ message UserAddress{
   string usage=4;
   bool prefer=5;
   lbs.Address address=6;
+  google.protobuf.Struct metadata=7;
 }
 
 
@@ -136,6 +143,7 @@ message CreateAddressesRequest{
   string usage=4;
   bool prefer=5;
   lbs.Address address=6 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.Struct metadata=7;
 }
 
 message CreateAddressReply{
@@ -152,6 +160,7 @@ message UpdateAddress{
   string usage=4;
   bool prefer=5;
   lbs.Address address=6 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.Struct metadata=7;
 }
 
 message UpdateAddressesReply{

@@ -3,6 +3,7 @@ package query
 import (
 	"github.com/iancoleman/strcase"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/fieldmaskpb"
 	"strings"
 )
 

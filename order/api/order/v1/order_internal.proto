@@ -2,7 +2,11 @@ syntax = "proto3";
 
 package order.api.order.v1;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -41,8 +45,10 @@ message CreateInternalOrderRequest{
 
   string customer_id=18;
 
+  optional google.protobuf.Duration pay_before=19;
   string currency_code=20;
 
+  google.protobuf.Struct extra=100;
 
   repeated CreateInternalOrderItem items=200 [(validate.rules).repeated.min_items=1,(google.api.field_behavior) = REQUIRED];
 }
@@ -58,6 +64,7 @@ message CreateInternalOrderItem{
 
   OrderProduct product=100 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
 
+  google.protobuf.Struct biz_payload=200;
 
 }
 
@@ -71,6 +78,8 @@ message GetInternalOrderRequest{
 message InternalOrderPaySuccessRequest{
   string id=1 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
 
+  google.protobuf.Struct pay_extra = 21;
+  google.protobuf.Timestamp paid_time=22;
 
   string currency_code=23 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
 
@@ -86,6 +95,8 @@ message InternalOrderPaySuccessReply{
 message InternalOrderRefundedRequest{
   string id=1 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
 
+  google.protobuf.Struct pay_extra = 21;
+  google.protobuf.Timestamp refund_time=22;
 
   string currency_code=23 [(validate.rules).string.min_len=1,(google.api.field_behavior) = REQUIRED];
   int64 refund_price_amount=30;

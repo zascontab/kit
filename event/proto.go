@@ -2,6 +2,7 @@ package event
 
 import (
 	"context"
+	"google.golang.org/protobuf/proto"
 )
 
 func NewMessageFromProto(msg proto.Message) (Event, error) {

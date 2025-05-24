@@ -16,6 +16,7 @@ syntax = "proto3";
 
 package google.api;
 
+import "google/protobuf/descriptor.proto";
 
 option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
 option java_multiple_files = true;
@@ -24,6 +25,7 @@ option java_package = "com.google.api";
 option objc_class_prefix = "GAPI";
 
 
+extend google.protobuf.ServiceOptions {
   // The hostname for this service.
   // This should be specified with no prefix or protocol.
   //
@@ -59,6 +61,7 @@ option objc_class_prefix = "GAPI";
 }
 
 
+extend google.protobuf.MethodOptions {
   // A definition of a client library method signature.
   //
   // In client libraries, each proto RPC corresponds to one or more methods

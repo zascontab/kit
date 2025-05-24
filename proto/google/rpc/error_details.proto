@@ -16,6 +16,7 @@ syntax = "proto3";
 
 package google.rpc;
 
+import "google/protobuf/duration.proto";
 
 option go_package = "google.golang.org/genproto/googleapis/rpc/errdetails;errdetails";
 option java_multiple_files = true;
@@ -38,6 +39,7 @@ option objc_class_prefix = "RPC";
 // reached.
 message RetryInfo {
   // Clients should wait at least this long between retrying the same request.
+  google.protobuf.Duration retry_delay = 1;
 }
 
 // Describes additional debugging info.
@@ -168,6 +170,7 @@ message BadRequest {
   // A message type used to describe a single bad request field.
   message FieldViolation {
     // A path leading to a field in the request body. The value will be a
+    // sequence of dot-separated identifiers that identify a protocol buffer
     // field. E.g., "field_violations.field" would identify this field.
     string field = 1;
 

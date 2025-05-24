@@ -3,6 +3,10 @@ syntax = "proto3";
 package saas.api.tenant.v1;
 
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "blob/blob.proto";
@@ -151,6 +155,7 @@ message CreateTenantRequest {
 
 message UpdateTenantRequest {
 	UpdateTenant tenant=1  [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+	google.protobuf.FieldMask update_mask = 2;
 }
 
 
@@ -190,6 +195,7 @@ message ListTenantRequest {
 	int32 page_size = 2;
 	string search = 3;
 	repeated string sort =4;
+	google.protobuf.FieldMask fields=5;
 	TenantFilter filter =6;
 }
 
@@ -205,6 +211,8 @@ message Tenant{
 	string name=2;
 	string display_name=3;
 	string region=4;
+	optional google.protobuf.Timestamp created_at=5;
+	optional google.protobuf.Timestamp updated_at=6;
 
 	repeated TenantConnectionString conn=7;
 	repeated TenantFeature features=8;

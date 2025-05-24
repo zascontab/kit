@@ -1,7 +1,0 @@
-version: v1
-plugins:
-    out: ./user/private/service/openapi
-    opt:
-      - allow_merge=true
-      - proto3_optional_nullable=true
-      - merge_file_name=api

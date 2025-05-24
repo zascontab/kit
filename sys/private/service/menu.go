@@ -14,6 +14,8 @@ import (
 	"github.com/go-saas/kit/sys/private/biz"
 	v1 "github.com/go-saas/kit/user/api/permission/v1"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/structpb"
+	"google.golang.org/protobuf/types/known/timestamppb"
 
 	pb "github.com/go-saas/kit/sys/api/menu/v1"
 )

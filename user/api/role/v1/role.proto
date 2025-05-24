@@ -3,6 +3,9 @@ syntax = "proto3";
 package user.api.role.v1;
 
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 import "user/api/permission/v1/permission.proto";
 import "validate/validate.proto";
 import "google/api/field_behavior.proto";
@@ -79,6 +82,7 @@ message ListRolesRequest{
   int32 page_size = 2;
   string search = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   RoleFilter filter =6;
 }
 
@@ -113,6 +117,7 @@ message CreateRoleRequest{
 
 message UpdateRoleRequest{
   UpdateRole role=2 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 3;
 }
 
 message UpdateRole{

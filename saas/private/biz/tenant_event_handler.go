@@ -13,6 +13,7 @@ import (
 	"github.com/go-saas/kit/pkg/query"
 	v1 "github.com/go-saas/kit/saas/event/v1"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 func NewTenantReadyEventHandler(useCase *TenantUseCase) event.ConsumerHandler {

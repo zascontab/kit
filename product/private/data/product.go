@@ -9,6 +9,7 @@ import (
 	"github.com/go-saas/kit/product/private/biz"
 	sgorm "github.com/go-saas/saas/gorm"
 	"github.com/goxiaoy/go-eventbus"
+	"google.golang.org/protobuf/types/known/fieldmaskpb"
 	"gorm.io/gorm"
 )
 

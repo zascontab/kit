@@ -9,6 +9,7 @@ import (
 	"github.com/samber/lo"
 
 	pb "github.com/go-saas/kit/realtime/api/notification/v1"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type NotificationService struct {

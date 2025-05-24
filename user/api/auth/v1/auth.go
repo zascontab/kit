@@ -1,5 +1,6 @@
 package v1
 
+import "google.golang.org/protobuf/proto"
 
 func (x *LoginAuthRequest) StringWithMask(mask string) string {
 	ret := proto.Clone(x).(*LoginAuthRequest)

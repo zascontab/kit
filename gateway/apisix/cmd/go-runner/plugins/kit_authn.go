@@ -24,6 +24,8 @@ import (
 	"github.com/go-saas/sessions"
 	"github.com/samber/lo"
 	"go.opentelemetry.io/otel/propagation"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/durationpb"
 	"net/http"
 	"strings"
 	"time"

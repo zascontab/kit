@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	klog "github.com/go-kratos/kratos/v2/log"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/types/known/structpb"
 	"io/ioutil"
 	"net/http"
 	"strings"

@@ -3,6 +3,8 @@ syntax = "proto3";
 package user.event.v1;
 
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "google/api/field_behavior.proto";

@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package product.api.product.v1;
 
+import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -60,6 +62,7 @@ message CreateBrandRequest {
 
 message UpdateBrandRequest {
   UpdateBrand brand=1 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2;
 }
 
 message UpdateBrand{
@@ -95,6 +98,7 @@ message ListBrandRequest {
   int32 page_size = 2;
   string search = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   BrandFilter filter =6;
 }
 message ListBrandReply {

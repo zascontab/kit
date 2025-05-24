@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package product.api.category.v1;
 
+import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -58,6 +61,7 @@ message CreateProductCategoryRequest {
 
 message UpdateProductCategoryRequest {
   UpdateProductCategory category=1 [(validate.rules).message.required=true,(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2;
 }
 
 message UpdateProductCategory{
@@ -87,6 +91,7 @@ message ListProductCategoryRequest {
   int32 page_size = 2;
   string search = 3;
   repeated string sort =4;
+  google.protobuf.FieldMask fields=5;
   ProductCategoryFilter filter =6;
 }
 message ListProductCategoryReply {
@@ -98,5 +103,6 @@ message ProductCategory{
   string key=1;
   string name=2;
   string path=3;
+  google.protobuf.Timestamp created_at =4;
   string parent=5;
 }

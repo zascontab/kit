@@ -4,6 +4,9 @@ import (
 	"context"
 	"github.com/eko/gocache/v3/cache"
 	"github.com/eko/gocache/v3/store"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/anypb"
 )
 
 type ProtoCache[T proto.Message] struct {

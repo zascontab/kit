@@ -46,4 +46,11 @@ func shortVersion() string {
 // Running OS/Arch: xxx/xxx
 // Building OS/Arch: xxx/xxx
 func longVersion() string {
+	buf := bytes.NewBuffer(nil)
+	fmt.Fprintln(buf, "Version:", _buildVersion)
+	fmt.Fprintln(buf, "Git SHA:", _buildGitRevision)
+	fmt.Fprintln(buf, "Go Version:", _buildGoVersion)
+	fmt.Fprintln(buf, "Building OS/Arch:", _buildOS)
+	fmt.Fprintln(buf, "Running OS/Arch:", _runningOS)
+	return buf.String()
 }

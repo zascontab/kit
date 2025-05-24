@@ -7,6 +7,7 @@ import (
 	"github.com/go-saas/kit/product/private/biz"
 	"github.com/google/uuid"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 func mapBizPrice2Pb(ctx context.Context, a *biz.Price, b *v12.Price) {

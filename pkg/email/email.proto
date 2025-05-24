@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package email;
 
+import "google/protobuf/duration.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "github.com/go-saas/kit/pkg/email;email";
 
@@ -15,6 +17,7 @@ message Config{
     string username=3;
     string password=4;
 
+    google.protobuf.Duration timeout=7;
     bool tls_skip_verify=9;
   }
   SMTP smtp=100;

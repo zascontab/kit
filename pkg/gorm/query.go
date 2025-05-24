@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/go-saas/kit/pkg/query"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 	"gorm.io/gorm"
 )
 

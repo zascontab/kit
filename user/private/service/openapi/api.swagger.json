@@ -3492,6 +3492,7 @@
           "type": "array",
           "items": {
             "type": "object",
+            "$ref": "#/definitions/protobufAny"
           }
         }
       }
@@ -3714,6 +3715,7 @@
         }
       }
     },
+    "protobufAny": {
       "type": "object",
       "properties": {
         "@type": {
@@ -3722,6 +3724,7 @@
       },
       "additionalProperties": {}
     },
+    "protobufNullValue": {
       "type": "string",
       "enum": [
         "NULL_VALUE"

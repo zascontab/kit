@@ -8,6 +8,8 @@ import (
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 
+	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/go-saas/kit/cmd/protoc-gen-go-errors-i18n/v2/errors"
 )

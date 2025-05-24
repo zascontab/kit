@@ -4,7 +4,9 @@ package user.internal;
 option go_package = "github.com/go-saas/kit/user/private/conf;conf";
 
 import "conf/conf.proto";
+import "google/protobuf/wrappers.proto";
 import "blob/blob.proto";
+import "google/protobuf/duration.proto";
 import "authz/authz/def.proto";
 import "idp/idp.proto";
 import "stripe/stripe.proto";
@@ -33,11 +35,17 @@ message UserConf{
   Admin admin =2;
   string root_url=4;
   // default to 5m
+  google.protobuf.Duration email_confirm_expiry = 5;
   // default to 5m
+  google.protobuf.Duration phone_confirm_expiry = 6;
   // default to 5m
+  google.protobuf.Duration email_recover_expiry = 7;
   // default to 5m
+  google.protobuf.Duration phone_recover_expiry = 8;
   // default to 5m
+  google.protobuf.Duration login_passwordless_expiry=9;
 
+  optional google.protobuf.StringValue totp_2fa_issuer=100;
   idp.Config idp=200;
 }
 

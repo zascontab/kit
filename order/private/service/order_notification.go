@@ -7,6 +7,8 @@ import (
 	v1 "github.com/go-saas/kit/order/event/v1"
 	v12 "github.com/go-saas/kit/realtime/event/v1"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/types/known/structpb"
 	"strings"
 )
 

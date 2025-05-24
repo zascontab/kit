@@ -1,5 +1,6 @@
 package data
 
+import "google.golang.org/protobuf/types/known/structpb"
 
 //Value represents dynamic field which is friendly for database
 type Value struct {

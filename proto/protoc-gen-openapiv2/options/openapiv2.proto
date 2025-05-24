@@ -4,6 +4,7 @@ package grpc.gateway.protoc_gen_openapiv2.options;
 
 option go_package = "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options";
 
+import "google/protobuf/struct.proto";
 
 // Scheme describes the schemes supported by the OpenAPI Swagger
 // and Operation objects.
@@ -97,6 +98,7 @@ message Swagger {
   reserved 13;
   // Additional external documentation.
   ExternalDocumentation external_docs = 14;
+  map<string, google.protobuf.Value> extensions = 15;
 }
 
 // `Operation` is a representation of OpenAPI v2 specification's Operation object.
@@ -167,6 +169,7 @@ message Operation {
   // definition overrides any declared top-level security. To remove a top-level
   // security declaration, an empty array can be used.
   repeated SecurityRequirement security = 12;
+  map<string, google.protobuf.Value> extensions = 13;
 }
 
 // `Header` is a representation of OpenAPI v2 specification's Header object.
@@ -232,6 +235,7 @@ message Response {
   // `Examples` gives per-mimetype response examples.
   // See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#example-object
   map<string, string> examples = 4;
+  map<string, google.protobuf.Value> extensions = 5;
 }
 
 // `Info` is a representation of OpenAPI v2 specification's Info object.
@@ -273,6 +277,7 @@ message Info {
   // Provides the version of the application API (not to be confused
   // with the specification version).
   string version = 6;
+  map<string, google.protobuf.Value> extensions = 7;
 }
 
 // `Contact` is a representation of OpenAPI v2 specification's Contact object.
@@ -420,6 +425,7 @@ message JSONSchema {
   // be imported into the protofile. If no message is identified, the Ref will
   // be used verbatim in the output.
   // For example:
+  //  `ref: ".google.protobuf.Timestamp"`.
   string ref = 3;
   // field 4 is reserved for '$comment', omitted from OpenAPI v2.
   reserved 4;
@@ -599,6 +605,7 @@ message SecurityScheme {
   // The available scopes for the OAuth2 security scheme.
   // Valid for oauth2.
   Scopes scopes = 8;
+  map<string, google.protobuf.Value> extensions = 9;
 }
 
 // `SecurityRequirement` is a representation of OpenAPI v2 specification's

@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package event;
 
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "github.com/go-saas/kit/event;event";
 
@@ -12,13 +15,17 @@ message Config{
   string group=4;
 
   message Kafka{
+    optional google.protobuf.StringValue version=1;
   }
 
   Kafka kafka=10;
 
   message Pulsar{
+    optional google.protobuf.Duration operation_timeout=1;
+    optional google.protobuf.Duration connection_timeout=2;
   }
 
   Pulsar pulsar=11;
 
+  google.protobuf.Struct extra=100;
 }

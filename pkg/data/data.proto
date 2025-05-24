@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package data;
 
+import "google/protobuf/struct.proto";
 import "query/operation.proto";
 
 option go_package = "github.com/go-saas/kit/pkg/data;data";
@@ -14,6 +15,8 @@ message DynamicValue{
     double double_value=5;
     string string_value=6;
     bool bool_value=7;
+    google.protobuf.NullValue null_value=8;
+    google.protobuf.Struct json_value=9;
   }
 }
 

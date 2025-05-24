@@ -2,6 +2,8 @@ package common
 
 import (
 	"github.com/go-saas/kit/pkg/conf"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/durationpb"
 	"time"
 )
 

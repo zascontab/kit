@@ -14,6 +14,8 @@ import (
 	kregistry "github.com/go-saas/kit/pkg/registry"
 	"github.com/goava/di"
 	grpcx "google.golang.org/grpc"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/durationpb"
 	"time"
 )
 

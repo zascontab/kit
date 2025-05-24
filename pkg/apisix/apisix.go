@@ -3,6 +3,7 @@ package apisix
 import (
 	"encoding/json"
 	"github.com/go-kratos/kratos/v2/log"
+	"google.golang.org/protobuf/encoding/protojson"
 	"gopkg.in/yaml.v3"
 )
 

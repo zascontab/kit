@@ -8,6 +8,7 @@ import (
 	cache2 "github.com/go-saas/kit/pkg/cache"
 	v1 "github.com/go-saas/kit/user/api/auth/v1"
 	"github.com/google/uuid"
+	"google.golang.org/protobuf/proto"
 	"time"
 )
 

@@ -15,6 +15,8 @@ import (
 	"github.com/hibiken/asynq"
 	"github.com/pkg/errors"
 	"github.com/samber/lo"
+	"google.golang.org/protobuf/types/known/fieldmaskpb"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 type ApisixSeed struct {

@@ -2,7 +2,11 @@ syntax = "proto3";
 
 package payment.api.checkout.v1;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
 import "google/api/field_behavior.proto";
 import "validate/validate.proto";
 import "query/operation.proto";
@@ -41,6 +45,7 @@ message CheckoutItemParams{
   string id=1;
   string price_id=10;
   int64 quantity=11;
+  google.protobuf.Struct biz_payload=200;
 }
 
 message CheckoutNowReply{

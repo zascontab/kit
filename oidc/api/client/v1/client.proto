@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package oidc.api.client;
 import "errors/errors.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "validate/validate.proto";
 import "google/api/field_behavior.proto";
@@ -31,8 +34,7 @@ service ClientService{
       body: "*"
     };
   }
-
-  rpc DeleteOAuth2Client(DeleteOAuth2ClientRequest)returns(OAuth2Client){
+  rpc DeleteOAuth2Client(DeleteOAuth2ClientRequest)returns(google.protobuf.Empty){
     option (google.api.http) = {
       delete:  "/v1/oidc/client/{id}"
     };
@@ -80,11 +82,14 @@ message OAuth2Client{
   optional int64 client_secret_expires_at=8;
   optional string client_uri=9;
   repeated string contacts=10;
+  google.protobuf.Timestamp created_at=11;
   optional bool frontchannel_logout_session_required=12;
   optional string frontchannel_logout_uri=13;
   repeated string  grant_types=14;
+  optional google.protobuf.Struct jwks=15;
   optional string jwks_uri=16;
   optional string logo_uri=17;
+  optional google.protobuf.Struct metadata=18;
   optional string owner=19;
   optional string policy_uri=20;
   repeated string post_logout_redirect_uris=21;
@@ -100,7 +105,9 @@ message OAuth2Client{
   optional string token_endpoint_auth_method=32;
   optional string token_endpoint_auth_signing_alg=33;
   optional string tos_uri=34;
+  google.protobuf.Timestamp updated_at=35;
   optional string userinfo_signed_response_alg=36;
+
 }
 
 message DeleteOAuth2ClientRequest{
@@ -120,6 +127,7 @@ message PatchOAuth2Client{
   optional string from=1;
   string op=2;
   string path=3;
+  google.protobuf.Struct value=5;
 }
 
 message UpdateOAuth2ClientRequest{
